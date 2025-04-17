@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: 'postgres-demo'
+    restart: always
+    ports:
+      - 15432:5432
+    env_file:
+      - ..\..\envs\.env
+    networks:
+      - postgres-network
+    volumes:
+      - ${PWD}/db-data/:/var/lib/postgresql/data/
+      - ${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../../data:/assets/data 
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: 'pgadmin-demo'
+    ports:
+      - 15433:80
+    env_file:
+      - ..\..\envs\.env
+    user: '$UID:$GID'
+    depends_on:
+      - postgres
+    networks:
+      - postgres-network
+    volumes:
+      - ${PWD}/pgadmin-data/:/var/lib/pgadmin/
+
+
+networks: 
+  postgres-network:
+    driver: bridge

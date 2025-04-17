@@ -398,3 +398,21 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Assets folders
+# This folder is very large
+assets/output 
+
+# Env files 
+envs/.env
