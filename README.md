@@ -92,6 +92,7 @@ Below there are the steps to test **_manually_**.
     *   After the fine-tuning job completes successfully, deploy the model.
 
 3.  **Local Database Setup:**
+    *   Download Olist [Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce/code) at kaggle.
     *   Run the local PostgreSQL database using Docker Compose (see [Local Database](#local-database) section below for commands).
     *   Access pgAdmin (usually `http://localhost:15433`) using the credentials from your `.env` file.
     *   **Important:** Currently, the `init.sql` script might not automatically populate data due to potential `COPY` command limitations or permissions within Docker. If the tables are empty after starting the containers, manually execute the `CREATE TABLE` statements from `infra/dockercompose/init.sql` in pgAdmin. Then, use pgAdmin's import tool or `psql` to load the data from the CSV files located in the `data/olist_dataset` directory into the corresponding tables.
