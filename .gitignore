@@ -413,6 +413,6 @@ wheels/
 # Assets folders
 # This folder is very large
 assets/output 
-
+assets/data/olist_dataset
 # Env files 
 envs/.env
